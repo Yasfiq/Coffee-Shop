@@ -1,0 +1,18 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer components {
+  .btn-secondary {
+    @apply py-3 px-11 bg-secondary text-white font-bold rounded-xl duration-300 hover:shadow-xl hover:shadow-secondary/40;
+  }
+  .btn-primary {
+    @apply py-3 px-11 bg-primary text-secondary font-bold rounded-xl duration-300 hover:shadow-xl hover:shadow-primary/40;
+  }
+  .btn-third {
+    @apply py-3 px-11 bg-third/40 text-blold font-bold rounded-xl;
+  }
+  .input-oneline {
+    @apply border-b-[1px] border-[#4F5665] block w-full p-3 focus:outline-none focus:border-b-2 mt-3;
+  }
+}

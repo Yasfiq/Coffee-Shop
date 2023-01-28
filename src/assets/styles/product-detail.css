@@ -1,0 +1,13 @@
+.checkRadio:checked + label {
+  @apply py-3 px-11 bg-secondary text-white font-bold rounded-xl;
+}
+
+.checkRadio::-webkit-outer-spin-button,
+.checkRadio::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+.checkRadio {
+  -moz-appearance: textfield;
+}
