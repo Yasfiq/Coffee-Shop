@@ -1,4 +1,4 @@
-const HistoryItem = ({image}) => {
+const HistoryItem = ({image, productname, quantity, totalPrice, status}) => {
     return <>
         <div className="flex p-5 bg-white rounded-xl">
             <div className={`w-24 h-24 rounded-2xl mr-8 bg-primary ${image}`}></div>
@@ -6,7 +6,7 @@ const HistoryItem = ({image}) => {
                 <p>{productname}</p>
                 <p>x {quantity}</p>
                 <p>{totalPrice}</p>
-                <p>{Status}</p>
+                <p>{status}</p>
             </div>
         </div>
     </>
