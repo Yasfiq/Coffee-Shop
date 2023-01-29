@@ -13,8 +13,13 @@ import Size from "./Size/Size";
 
 const ProductDetail = () => {
     let { id } = useParams();
-    const [product, setProduct] = React.useState([]);
-    let [quantity, setQuantity] = React.useState(1);
+    const [product, setProduct] = useState([]);
+    let [quantity, setQuantity] = useState(1);
+    const [order, setOrders] = useState({
+
+    })
+
+
     const handleQuantity = (event) => {
         setQuantity(event.target.value)
     }
@@ -24,6 +29,24 @@ const ProductDetail = () => {
     const minusQuantity = (event) => {
         setQuantity(quantity-=1)
     }
+
+
+    const handleSubmit = (e) => {
+        e.preventDefault();
+
+        const data = new FormData(e.target)
+        data.append("id_product", id)
+        data.append("product_name", product[0].productname)
+        data.append("total_price", parseInt(product[0].price)*quantity*1000)
+        data.append("id_user", JSON.parse(localStorage.getItem('@userLogin')).id)
+        data.append("name", JSON.parse(localStorage.getItem('@userLogin')).name)
+        console.log(data);
+
+        data.forEach(value => {
+            console.log(value);
+        })
+    }
+
 
     React.useEffect(() => {
         if(quantity < 1) {
@@ -36,7 +59,7 @@ const ProductDetail = () => {
     return (
         <>
             <Header product authorized />
-            <form className="container grid grid-cols-12 gap-x-20 gap-y-10 mx-auto py-10">
+            <form className="container grid grid-cols-12 gap-x-20 gap-y-10 mx-auto py-10" onSubmit={handleSubmit}>
                 <p className="col-span-12 font-rubik text-base">Product &#62; <span className="text-secondary font-bold">{(product[0]) && product[0].productname}</span></p>
                 <div className="col-span-6 py-5">
                     <img src={(product[0]) && `http://localhost:3000/uploads/${product[0].productimage[0].filename}`} className="block h-72 w-72 rounded-full bg-cover bg-center bg-no-repeat mx-auto mt-4" alt={(product[0]) && product[0].productimage[0].name} />    
@@ -57,7 +80,7 @@ const ProductDetail = () => {
                         </div>
                         <p className="text-4xl font-bold text-black">{`IDR ${(product[0]) ? (parseInt(product[0].price)*quantity*1000) : ''}`}</p>
                     </div>
-                    <button className="btn-primary w-full text-4xl mt-16">Add to cart</button>
+                    <button type="submit" className="btn-primary w-full text-4xl mt-16">Add to cart</button>
                     <button className="btn-secondary w-full text-4xl mt-5">Ask a staff</button>
                 </div>
                 <div className="col-span-5 flex-col flex items-center border-2 p-5 rounded-3xl shadow-2xl">
