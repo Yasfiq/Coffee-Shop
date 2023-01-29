@@ -76,23 +76,25 @@ const Menu = (props) => {
           result.Data.map((product) => {
             return (
               <div>
-                <div
-                  key={product.id}
-                  className="px-3 py-5 text-center bg-white rounded-3xl shadow-xl"
-                >
-                  <img
-                    src={`http://localhost:3000/uploads/${product.productimage[0].filename}`}
-                    alt={product.productimage[0].name}
-                    className="-mt-20 w-40 h-40 mx-auto rounded-full"
-                  />
-                  <h4 className="font-poppins text-2xl font-black mt-4">
-                    {product.productname}
-                  </h4>
-                  <p className="price font-bold text-xl my-3">
-                    {product.price}
-                  </p>
-                  {checkRole(product)}
-                </div>
+                <Link to={`${product.id}`}>
+                  <div
+                    key={product.id}
+                    className="px-3 py-5 text-center bg-white rounded-3xl shadow-xl"
+                  >
+                    <img
+                      src={`http://localhost:3000/uploads/${product.productimage[0].filename}`}
+                      alt={product.productimage[0].name}
+                      className="-mt-20 w-40 h-40 mx-auto rounded-full"
+                    />
+                    <h4 className="font-poppins text-2xl font-black mt-4">
+                      {product.productname}
+                    </h4>
+                    <p className="price font-bold text-xl my-3">
+                      {product.price}
+                    </p>
+                    {checkRole(product)}
+                  </div>
+                </Link>
               </div>
             );
           })

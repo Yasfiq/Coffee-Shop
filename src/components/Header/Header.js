@@ -75,7 +75,7 @@ const Header = (props) => {
         <header className="shadow-lg lg:h-28 md:static fixed w-screen">
 
           {/* Navbar Bottom */}
-          <div className="fixed bottom-0 w-screen flex justify-between backdrop-blur-md px-8 py-6">
+          <div className="md:hidden fixed bottom-0 w-screen flex justify-between backdrop-blur-md px-8 py-6">
             <Link to='/product'>
               <img src={homeIcon} alt="home-icon" className='shadow-lg shadow-secondary/40' />
             </Link>
@@ -89,8 +89,8 @@ const Header = (props) => {
           {/* End Navbar Bottom */}
           
           {/* Mobile Navbar */}
-          <div className={`fixed h-screen w-screen cursor-pointer bg-black/20 duration-300 ease-in-out ${setActive || 'hidden'}`} onClick={handleToggle}></div>
-          <div className={`w-[70%] z-10 fixed h-screen overflow-hidden bg-white rounded-tr-3xl duration-300 ease-in-out ${navbarActive || '-translate-x-full'}`}>
+          <div className={`fixed md:hidden h-screen w-screen cursor-pointer bg-black/20 duration-300 ease-in-out ${setActive || 'hidden'}`} onClick={handleToggle}></div>
+          <div className={`w-[70%] z-10 md:hidden fixed h-screen overflow-hidden bg-white rounded-tr-3xl duration-300 ease-in-out ${navbarActive || '-translate-x-full'}`}>
             <div className="py-8 w-full text-center text-sm text-white bg-secondary">
             <img
               src={getUserResult ? `http://localhost:3000/uploads/${getUserResult[0].profile_image}` : ''}
@@ -119,7 +119,7 @@ const Header = (props) => {
           </div>
           {/* End Mobile Navbar */}
 
-          <nav className="flex justify-between container relative bg-white md:py-8 py-3">
+          <nav className="flex justify-between container relative bg-white md:py-6 py-3">
             {/* Hamburger Button */}
               <div className="md:hidden cursor-pointer" onClick={handleToggle}>
                 <div className="w-7 h-0.5 m-2 bg-slate-800"></div>
@@ -129,7 +129,7 @@ const Header = (props) => {
             {/* End Hamburger Button */}
 
             {/* Features */}
-            <div className="flex space-x-5 items-center">
+            <div className="md:hidden flex space-x-5 items-center">
               <img src={searchIcon} alt="search-icon" className="h-[1.7rem]"/>
               <Link to='/cart'>
                 <img src={cartIcon} alt="cart-icon" className="h-8"/>
@@ -139,7 +139,7 @@ const Header = (props) => {
             
             <NavbarBrand />
 
-            <ul className="lg:flex hidden justify-center items-center">
+            <ul className="md:flex hidden justify-center items-center">
               <Navlink linkto="/" title="Home" active={props.home && true} />
               <Navlink
                 linkto="/product"
@@ -233,8 +233,8 @@ const Header = (props) => {
         <header className="shadow-lg">
 
           {/* Mobile Navbar */}
-          <div className={`absolute h-screen w-screen cursor-pointer bg-black/20 duration-300 ease-in-out ${setActive || 'hidden'}`} onClick={handleToggle}></div>
-          <div className={`w-[70%] z-10 absolute h-screen overflow-hidden bg-white rounded-tr-3xl duration-300 ease-in-out ${navbarActive || '-translate-x-full'}`}>
+          <div className={`absolute md:hidden h-screen w-screen cursor-pointer bg-black/20 duration-300 ease-in-out ${setActive || 'hidden'}`} onClick={handleToggle}></div>
+          <div className={`w-[70%] md:hidden z-10 absolute h-screen overflow-hidden bg-white rounded-tr-3xl duration-300 ease-in-out ${navbarActive || '-translate-x-full'}`}>
             <div className="py-8 w-full text-center text-sm text-white bg-secondary">
               <img
                 src='http://localhost:3000/uploads/defaultprofil.webp'
@@ -261,7 +261,7 @@ const Header = (props) => {
             {/* End Hamburger Button */}
 
             {/* Features */}
-            <div className="flex space-x-5 items-center">
+            <div className="flex md:hidden space-x-5 items-center">
               <Link to='/chat'>
                 <img src={chatIcon} alt="chat-icon" className="h-8"/>
               </Link>
@@ -273,7 +273,7 @@ const Header = (props) => {
             {/* End Features */}
             
             <NavbarBrand />
-            <ul className="lg:flex hidden justify-center items-center">
+            <ul className="md:flex hidden justify-center items-center">
               <Navlink linkto="/" title="Home" active={props.home && true} />
               <Navlink
                 linkto="/product"
