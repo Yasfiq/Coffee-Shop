@@ -23,6 +23,10 @@ const Product = () => {
             return <>
                 <Link to='add-product'><a href="product/add-product" className="btn-primary font-medium text-xl">Add products +</a></Link>
             </>
+            } else {
+                return <>
+                    <h1 className="md:hidden mt-6 mb-6 font-poppins font-black text-3xl">A good coffee is a good day</h1>
+                </>
             }
         } else {
             return
@@ -67,8 +71,8 @@ const Product = () => {
     return (
         <>
             <Header product isLogin={setIsLogin} authorized={isLogin}/>
-            <section className="grid grid-cols-7 border-b mx-auto">
-                <aside className="border-r col-span-2 text-center py-8">
+            <section className="grid grid-cols-7 md:pt-0 pt-16 border-b mx-auto">
+                <aside className="border-r md:col-span-2 hidden text-center py-8">
                     <h3 className="text-4xl font-bold mb-2 text-secondary font-rubik">Promo for you</h3>
                     <p className="font-poppins text-base mb-8">Coupons will be updated every weeks. Check them out!</p>
                     <Coupons />
@@ -81,14 +85,14 @@ const Product = () => {
                         <li>4. Should make member card to apply coupon</li>
                     </ol>
                 </aside>
-                <main className="col-span-5 p-10">
+                <main className="md:col-span-5 col-span-12 md:p-10 pl-10 md:w-auto w-screen">
                     {checkRole()}
-                    <div className="flex items-center justify-between">
-                        <ul className="mt-8 text-2xl flex space-x-8 mb-10">
+                    <div className="flex items-center justify-between md:w-auto w-screen overflow-x-scroll">
+                        <ul className="md:mt-8 md:text-2xl text-xl flex space-x-8 mb-10">
                             <li className="cursor-pointer hover:text-secondary font-bold text-secondary" onClick={(e) => {handleClickCategory(e,'')}}>All</li>
                             <li className="cursor-pointer hover:text-secondary text-[#9F9F9F]" onClick={(e) => {handleClickCategory(e,'')}}>Favorite</li>
                             <li className="cursor-pointer hover:text-secondary text-[#9F9F9F]" onClick={(e) => {handleClickCategory(e,'Coffee')}}>Coffee</li>
-                            <li className="cursor-pointer hover:text-secondary text-[#9F9F9F]" onClick={(e) => {handleClickCategory(e,'Non-Coffee')}}>Non Coffee</li>
+                            <li className="cursor-pointer hover:text-secondary text-[#9F9F9F] w-max" onClick={(e) => {handleClickCategory(e,'Non-Coffee')}}>Non Coffee</li>
                             <li className="cursor-pointer hover:text-secondary text-[#9F9F9F]" onClick={(e) => {handleClickCategory(e,'Food')}}>Foods</li>
                         </ul>
                         <div className="flex mr-20">    
@@ -106,7 +110,7 @@ const Product = () => {
                                 <option value="DESC">Price: High to Low</option>
                             </select>
                             <select onChange={handleLimit} id="countries" className="w-max ml-3 text-xl bg-gray-50 border border-gray-300 text-gray-900 rounded-lg focus:ring-secondary focus:border-secondary block p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
-                                <option value="1">1</option>
+                                <option value="10">10</option>
                                 <option value="5">5</option>
                             </select>
                         </div>

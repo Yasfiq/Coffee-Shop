@@ -6,6 +6,12 @@ import { useState, useEffect } from "react";
 import "../../assets/styles/header.css";
 import { useDispatch, useSelector } from "react-redux";
 import { getUserById } from "../../actions/userAction";
+import cartIcon from "../../assets/images/icon/cart.svg";
+import searchIcon from "../../assets/images/icon/search.svg";
+import chatIcon from "../../assets/images/icon/chat-bubble-with-lines 1.svg";
+import homeIcon from "../../assets/images/icon/mobile-home.svg";
+import userIcon from "../../assets/images/icon/user-icon.svg";
+
 
 const Header = (props) => {
   const [toggleState, setToggleState] = useState(false);
@@ -21,7 +27,42 @@ const Header = (props) => {
     setToggleState(toggleState => !toggleState);
   };
 
+
+  const checkRole = () => {
+    if (localStorage.getItem('@userLogin')) {
+      return <>
+          <li className="cursor-pointer border-b-[0.1px] border-secondary/40 pb-3"><Link to='/edit-profile'>Edit Profile</Link></li>
+          <li className="cursor-pointer border-b-[0.1px] border-secondary/40 pb-3"><Link to='/history'>Orders</Link></li>
+          <li className="cursor-pointer border-b-[0.1px] border-secondary/40 pb-3"><Link to='/product'>All menu</Link></li>
+          <li className="cursor-pointer border-b-[0.1px] border-secondary/40 pb-3">Privacy policy</li>
+          <li className="cursor-pointer border-b-[0.1px] border-secondary/40 pb-3">Security</li>
+      </>
+    } else {
+      return <>
+        <li className="mt-20">
+          <Link to="/login">
+            <button type="button" className="btn-secondary rounded-full block mx-auto text-xl">
+              Login
+            </button>
+          </Link>
+        </li>
+        <li>
+          <Link to="/register">
+              <button
+                type="button"
+                className="btn-primary rounded-full text-xl mx-auto block"
+              >
+                Sign Up
+              </button>
+            </Link>
+        </li>
+      </>
+    }
+  }
+
+
   let setActive = toggleState ? "active" : null;
+  let navbarActive = toggleState ? "translate-x-0" : null;
 
   useEffect(() => {
     const data = JSON.parse(localStorage.getItem('@userLogin'))
@@ -31,10 +72,74 @@ const Header = (props) => {
   if (props.authorized) {
     return (
       <>
-        <header className="shadow-lg h-28">
-          <nav className="flex justify-between container relative py-8">
+        <header className="shadow-lg lg:h-28 md:static fixed w-screen">
+
+          {/* Navbar Bottom */}
+          <div className="fixed bottom-0 w-screen flex justify-between backdrop-blur-md px-8 py-6">
+            <Link to='/product'>
+              <img src={homeIcon} alt="home-icon" className='shadow-lg shadow-secondary/40' />
+            </Link>
+            <Link to='/edit-profile'>
+              <img src={userIcon} alt="user-icon" className="h-8" />
+            </Link>
+            <Link to='/chat'>
+              <img src={chatIcon} alt="chat-icon" className="h-8"/>
+            </Link>
+          </div>
+          {/* End Navbar Bottom */}
+          
+          {/* Mobile Navbar */}
+          <div className={`fixed h-screen w-screen cursor-pointer bg-black/20 duration-300 ease-in-out ${setActive || 'hidden'}`} onClick={handleToggle}></div>
+          <div className={`w-[70%] z-10 fixed h-screen overflow-hidden bg-white rounded-tr-3xl duration-300 ease-in-out ${navbarActive || '-translate-x-full'}`}>
+            <div className="py-8 w-full text-center text-sm text-white bg-secondary">
+            <img
+              src={getUserResult ? `http://localhost:3000/uploads/${getUserResult[0].profile_image}` : ''}
+              alt="Default"
+              width="120"
+              height="120"
+              className="rounded-full mb-3 mx-auto"
+            />
+            {getUserResult ? (
+                    <>
+
+                      <p className="font-bold">{getUserResult[0].name}</p>
+                      <p>{getUserResult[0].email}</p> 
+                    </>
+                  ) : getUserLoading ? (
+                    <>
+                      <p></p>
+                      <p></p>
+                    </>
+                  ) : getUserError ? alert(getUserError) : (<p>User tidak ditemukan</p>)}
+            </div>
+            <ul className="p-6 font-rubik text-secondary text-base font-medium space-y-5">
+              {checkRole()}
+            </ul>
+            <p className="text-center text-base text-secondary font-rubik cursor-pointer font-medium mt-10" onClick={handleLogout}>Logout →</p>
+          </div>
+          {/* End Mobile Navbar */}
+
+          <nav className="flex justify-between container relative bg-white md:py-8 py-3">
+            {/* Hamburger Button */}
+              <div className="md:hidden cursor-pointer" onClick={handleToggle}>
+                <div className="w-7 h-0.5 m-2 bg-slate-800"></div>
+                <div className="w-5 h-0.5 m-2 bg-slate-800"></div>
+                <div className="w-8 h-0.5 m-2 bg-slate-800"></div>
+              </div>
+            {/* End Hamburger Button */}
+
+            {/* Features */}
+            <div className="flex space-x-5 items-center">
+              <img src={searchIcon} alt="search-icon" className="h-[1.7rem]"/>
+              <Link to='/cart'>
+                <img src={cartIcon} alt="cart-icon" className="h-8"/>
+              </Link>
+            </div>
+            {/* End Features */}
+            
             <NavbarBrand />
-            <ul className="flex justify-center items-center">
+
+            <ul className="lg:flex hidden justify-center items-center">
               <Navlink linkto="/" title="Home" active={props.home && true} />
               <Navlink
                 linkto="/product"
@@ -52,7 +157,7 @@ const Header = (props) => {
                 active={props.history && true}
               />
             </ul>
-            <div className="flex space-x-4 items-center">
+            <div className="lg:flex hidden space-x-4 items-center">
               <img
                 src={require("../../assets/images/icon/search-icon.webp")}
                 alt="icon search"
@@ -126,9 +231,49 @@ const Header = (props) => {
     return (
       <>
         <header className="shadow-lg">
-          <nav className="flex justify-between container mx-auto py-7">
+
+          {/* Mobile Navbar */}
+          <div className={`absolute h-screen w-screen cursor-pointer bg-black/20 duration-300 ease-in-out ${setActive || 'hidden'}`} onClick={handleToggle}></div>
+          <div className={`w-[70%] z-10 absolute h-screen overflow-hidden bg-white rounded-tr-3xl duration-300 ease-in-out ${navbarActive || '-translate-x-full'}`}>
+            <div className="py-8 w-full text-center text-sm text-white bg-secondary">
+              <img
+                src='http://localhost:3000/uploads/defaultprofil.webp'
+                alt="Default"
+                width="120"
+                height="120"
+                className="rounded-full mb-3 mx-auto"
+              />
+            </div>
+            <ul className="p-6 font-rubik text-secondary text-base font-medium space-y-5">
+              {checkRole()}
+            </ul>
+          </div>
+          {/* End Mobile Navbar */}
+
+          <nav className="flex justify-between container mx-auto md:py-7 py-3">
+
+            {/* Hamburger Button */}
+            <div className="md:hidden cursor-pointer"  onClick={handleToggle}>
+                <div className="w-7 h-0.5 m-2 bg-slate-800"></div>
+                <div className="w-5 h-0.5 m-2 bg-slate-800"></div>
+                <div className="w-8 h-0.5 m-2 bg-slate-800"></div>
+              </div>
+            {/* End Hamburger Button */}
+
+            {/* Features */}
+            <div className="flex space-x-5 items-center">
+              <Link to='/chat'>
+                <img src={chatIcon} alt="chat-icon" className="h-8"/>
+              </Link>
+              <img src={searchIcon} alt="search-icon" className="h-[1.7rem]"/>
+              <Link to='/cart'>
+                <img src={cartIcon} alt="cart-icon" className="h-8"/>
+              </Link>
+            </div>
+            {/* End Features */}
+            
             <NavbarBrand />
-            <ul className="flex justify-center items-center">
+            <ul className="lg:flex hidden justify-center items-center">
               <Navlink linkto="/" title="Home" active={props.home && true} />
               <Navlink
                 linkto="/product"
@@ -146,7 +291,7 @@ const Header = (props) => {
                 active={props.history && true}
               />
             </ul>
-            <div className="space-x-10">
+            <div className="space-x-10 md:block hidden">
               <Link to="/login">
                 <button type="button" className="text-secondary text-xl">
                   Login

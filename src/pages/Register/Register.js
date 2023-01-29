@@ -21,7 +21,7 @@ const Register = () => {
         if ( errorMessage !== undefined && errorMessage !== 'Must be filled completely!' ) {
             const form = new URLSearchParams(data)
             axios.post('http://localhost:3000/api/v1/auth/register', form).then(res => {
-                if (res.data.Message == 'Successfully register!') {
+                if (res.data.Message === 'Successfully register!') {
                     navigate('/login')
                 }
             }).catch(err => setError(err.response.data[0].msg))
