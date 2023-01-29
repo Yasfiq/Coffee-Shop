@@ -7,7 +7,7 @@ import instagramIcon from "../../assets/images/icon/instagram-circle.svg";
 const Footer = () => {
     return (
         <>
-            <footer className="container mx-auto py-28 flex justify-between">
+            <footer className="container hidden mx-auto py-28 md:flex justify-between">
                 <div className="max-w-md">
                     <NavbarBrand />
                     <p className="text-[#4F5665] mt-4 font-bold text-base font-rubik">
