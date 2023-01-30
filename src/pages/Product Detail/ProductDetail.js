@@ -9,15 +9,16 @@ import '../../assets/styles/product-detail.css'
 import PaymentMethod from "./Payment Method/Payment-Method";
 import Time from "./Time/Time";
 import Size from "./Size/Size";
+import { useDispatch, useSelector } from "react-redux";
+import { addOrder } from "../../actions/orderAction";
 
 
 const ProductDetail = () => {
     let { id } = useParams();
     const [product, setProduct] = useState([]);
     let [quantity, setQuantity] = useState(1);
-    const [order, setOrders] = useState({
-
-    })
+    const dispatch = useDispatch();
+    const { addOrderResult, addOrderLoading, addOrderError } = useSelector(state => state.orderReducer)
 
 
     const handleQuantity = (event) => {
@@ -34,17 +35,16 @@ const ProductDetail = () => {
     const handleSubmit = (e) => {
         e.preventDefault();
 
-        const data = new FormData(e.target)
-        data.append("id_product", id)
-        data.append("product_name", product[0].productname)
-        data.append("total_price", parseInt(product[0].price)*quantity*1000)
-        data.append("id_user", JSON.parse(localStorage.getItem('@userLogin')).id)
-        data.append("name", JSON.parse(localStorage.getItem('@userLogin')).name)
-        console.log(data);
+        const form = new FormData(e.target)
+        form.append("id_product", id)
+        form.append("product_name", product[0].productname)
+        form.append("total_price", parseInt(product[0].price)*quantity*1000)
+        form.append("id_user", JSON.parse(localStorage.getItem('@userLogin')).id)
+        form.append("name", JSON.parse(localStorage.getItem('@userLogin')).name)
 
-        data.forEach(value => {
-            console.log(value);
-        })
+        const data = new URLSearchParams(form) 
+        
+        dispatch(addOrder(data));
     }
 
 

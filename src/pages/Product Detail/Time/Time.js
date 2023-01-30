@@ -9,7 +9,7 @@ const Time = () => {
         </div>
         <div className="flex mt-6">
             <label htmlFor="time" className="text-base mr-8 self-center">Set Time</label>
-            <input type="text" name="time" id="time" placeholder="Enter time for reservation" className="bg-third/30 py-3 px-4 rounded-xl placeholder:text-blold" />
+            <input type="text" name="customTime" id="time" placeholder="Enter time for reservation" className="bg-third/30 py-3 px-4 rounded-xl placeholder:text-blold" />
         </div>
     </>
 }

@@ -19,6 +19,8 @@ import thunk from "redux-thunk";
 import reducers from "./reducers";
 import Cart from "./pages/Cart/Cart";
 import History from "./pages/History/History";
+// require('dotenv').config();
+
 
 const store = createStore(reducers, compose(applyMiddleware(thunk)));
 
