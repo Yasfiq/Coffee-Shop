@@ -3,12 +3,14 @@ import cameraIcon from '../../assets/images/icon/camera-icon.svg'
 import '../../assets/styles/add-product.css'
 import { Link, useNavigate, useParams } from "react-router-dom";
 import axios from "axios";
-import React, { useState } from "react";
+// import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { editProduct } from "../../actions/productAction";
+import { useState, useEffect } from "react";
 
 
 const EditProduct = () => {
+    let [isLogin, setIsLogin] = useState(false)
     const dispatch = useDispatch()
     const [ userInfo, setUserInfo ] = useState({
         filepreview: null,
@@ -18,6 +20,15 @@ const EditProduct = () => {
     const [product,setProduct] = useState([])
     let navigation = useNavigate()
     const { id } = useParams()
+
+
+    useEffect(() => {
+        if (localStorage.getItem('@userLogin')) {
+            setIsLogin(true)
+        } else {
+            setIsLogin(false)
+        }
+    },[isLogin])
 
 
     const handleSubmit = (e) => {
@@ -43,7 +54,7 @@ const EditProduct = () => {
     }
 
 
-    React.useEffect(() => {
+    useEffect(() => {
         axios.get(`http://localhost:3000/api/v1/products/${id}`).then(res => {
             setProduct(res.data.Data);
             // if (product[0]) {
@@ -67,7 +78,7 @@ const EditProduct = () => {
     },[id])   
     return (
         <>
-            <Header product />
+            <Header product isLogin={setIsLogin} authorized={isLogin} />
             <form className="container mx-auto font-rubik grid grid-cols-12 py-10" onSubmit={handleSubmit} encType="multipart/form-data">
                 <p className="col-span-12 text-xl">Product <span className="text-secondary font-bold">&#62; Edit product</span></p>
                 <div className="col-span-4 flex flex-col p-10 pt-16">

@@ -25,8 +25,9 @@ const History = () => {
         <div className="py-10 w-full bg-[url(../images/history-bg.webp)] bg-cover bg-center bg-no-repeat">
             <div className="container font-rubik">
                 <h1 className="text-white text-4xl font-bold text-center" style={{textShadow: '4px 4px 0px rgba(0,0,0,.8)'}}>Let see what you have bought!</h1>
-                <h3 className="text-white text-2xl text-center mt-5">Select item to delete</h3>
-                <HistoryList />
+                <div className="flex flex-wrap justify-between mt-8">
+                    <HistoryList />
+                </div>
             </div>
         </div>
         <Footer />

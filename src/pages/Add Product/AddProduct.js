@@ -2,12 +2,13 @@ import Header from "../../components/Header/Header";
 import cameraIcon from '../../assets/images/icon/camera-icon.svg'
 import '../../assets/styles/add-product.css'
 import { Link, useNavigate } from "react-router-dom";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { addProduct } from "../../actions/productAction";
 
 
 const AddProduct = () => {
+    let [isLogin, setIsLogin] = useState(false)
     const dispatch = useDispatch()
     const { addError } = useSelector((state) => state.productReducer)
     let navigation = useNavigate()
@@ -37,6 +38,16 @@ const AddProduct = () => {
             navigation('/product')
         }
     }
+
+
+    useEffect(() => {
+        if (localStorage.getItem('@userLogin')) {
+            setIsLogin(true)
+        } else {
+            setIsLogin(false)
+        }
+    },[isLogin])
+
 
     return (
         <>

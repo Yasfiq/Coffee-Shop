@@ -6,10 +6,16 @@ import { useState, useEffect } from "react"
 import { useNavigate } from "react-router-dom"
 import AddressDetails from "./Address Details/Address-Details"
 import PaymentMethods from "./Payment Methods/Payment-Methods"
+import { getOrder } from "../../actions/orderAction"
+import { useDispatch, useSelector } from "react-redux"
+import { Link } from "react-router-dom"
+
 
 const Cart = () => {
     const navigate = useNavigate()
     let [isLogin, setIsLogin] = useState(false);
+    const dispatch = useDispatch();
+
 
     useEffect(() => {
         if (!localStorage.getItem('@userLogin')) {
@@ -21,6 +27,13 @@ const Cart = () => {
             setIsLogin(false)
         }
     },[isLogin, navigate])
+
+
+    useEffect(() => {
+        if (localStorage.getItem('@userLogin')) {
+            dispatch(getOrder(JSON.parse(localStorage.getItem('@userLogin')).id));
+        }
+    },[dispatch])
 
 
     return (
@@ -38,7 +51,7 @@ const Cart = () => {
                     <div className="col-span-5">
                         <AddressDetails />
                         <PaymentMethods />
-                        <button className="btn-secondary w-full mt-5 text-2xl">Confirm and Pay</button>
+                        <Link to="/history"><button className="btn-secondary w-full mt-5 text-2xl">Confirm and Pay</button></Link>
                     </div>
                 </div>
             </div>
