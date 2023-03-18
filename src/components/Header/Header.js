@@ -88,7 +88,7 @@ const Header = (props) => {
   if (props.authorized) {
     return (
       <>
-        <header className="shadow-lg lg:h-28 md:static fixed w-screen">
+        <header className="shadow-lg md:static fixed w-screen">
           {/* Navbar Bottom */}
           <div className="md:hidden fixed bottom-0 w-screen flex justify-between backdrop-blur-md px-8 py-6">
             <Link to="/product">
@@ -101,9 +101,9 @@ const Header = (props) => {
             <Link to="/edit-profile">
               <img src={userIcon} alt="user-icon" className="h-8" />
             </Link>
-            <Link to="/chat">
+            {/* <Link to="/chat">
               <img src={chatIcon} alt="chat-icon" className="h-8" />
-            </Link>
+            </Link> */}
           </div>
           {/* End Navbar Bottom */}
 
@@ -170,7 +170,7 @@ const Header = (props) => {
 
             {/* Features */}
             <div className="md:hidden flex space-x-5 items-center">
-              <img src={searchIcon} alt="search-icon" className="h-[1.7rem]" />
+              {/* <img src={searchIcon} alt="search-icon" className="h-[1.7rem]" /> */}
               <Link to="/cart">
                 <img src={cartIcon} alt="cart-icon" className="h-8" />
               </Link>
@@ -198,13 +198,13 @@ const Header = (props) => {
               />
             </ul>
             <div className="lg:flex hidden space-x-4 items-center">
-              <img
+              {/* <img
                 src={require("../../assets/images/icon/search-icon.webp")}
                 alt="icon search"
                 width="30"
                 height="30"
-              />
-              <div className="mx-4 relative space-x-2">
+              /> */}
+              {/* <div className="mx-4 relative space-x-2">
                 <p className="bg-secondary w-auto h-auto p-1 text-xs absolute flex justify-center items-center rounded-full -top-2.5 -left-3 text-white">
                   99+
                 </p>
@@ -214,7 +214,7 @@ const Header = (props) => {
                   width="30"
                   height="30"
                 />
-              </div>
+              </div> */}
               <div className="flex items-center cursor-pointer">
                 <img
                   src={
@@ -298,7 +298,11 @@ const Header = (props) => {
           >
             <div className="py-8 w-full text-center text-sm text-white bg-secondary">
               <img
-                src="http://localhost:3000/uploads/defaultprofil.webp"
+                src={
+                  getUserResult
+                    ? `https://res.cloudinary.com/dcf12mtca/image/upload/v1678543339/${getUserResult[0].profile_image}.webp`
+                    : ""
+                }
                 alt="Default"
                 width="120"
                 height="120"
@@ -322,10 +326,10 @@ const Header = (props) => {
 
             {/* Features */}
             <div className="flex md:hidden space-x-5 items-center">
-              <Link to="/chat">
+              {/* <Link to="/chat">
                 <img src={chatIcon} alt="chat-icon" className="h-8" />
-              </Link>
-              <img src={searchIcon} alt="search-icon" className="h-[1.7rem]" />
+              </Link> */}
+              {/* <img src={searchIcon} alt="search-icon" className="h-[1.7rem]" /> */}
               <Link to="/cart">
                 <img src={cartIcon} alt="cart-icon" className="h-8" />
               </Link>
