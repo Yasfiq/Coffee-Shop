@@ -93,7 +93,7 @@ const EditProduct = () => {
                 userInfo.filepreview !== null
                   ? userInfo.filepreview
                   : product[0]
-                  ? `http://localhost:3000/uploads/${product[0].productimage[0].filename}`
+                  ? `https://res.cloudinary.com/dcf12mtca/image/upload/v1678543339/${product[0].productimage[0].filename}.webp`
                   : cameraIcon
               }
               alt="camera-icon"
