@@ -114,7 +114,7 @@ const Register = () => {
               Already have an account?
             </p>
             <hr className="border-t-2 -translate-y-8 -z-[1]" />
-            <Link to="/register">
+            <Link to="/login">
               <button className="btn-secondary w-full text-2xl">Login</button>
             </Link>
           </form>

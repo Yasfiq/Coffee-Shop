@@ -1,7 +1,7 @@
 import axios from "axios";
 // eslint-disable-next-line no-unused-vars
 import { useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import Header from "../../components/Header/Header";
 import Footer from "../../components/Footer/Footer";
 import React from "react";
@@ -20,6 +20,7 @@ const ProductDetail = () => {
   const { addOrderResult, addOrderLoading, addOrderError } = useSelector(
     (state) => state.orderReducer
   );
+  const navigate = useNavigate();
 
   const handleQuantity = (event) => {
     setQuantity(event.target.value);
@@ -34,17 +35,20 @@ const ProductDetail = () => {
   const handleSubmit = (e) => {
     e.preventDefault();
 
+    if (localStorage.getItem("@userLogin") === null) {
+      navigate("/login");
+    }
+
     const form = new FormData(e.target);
     form.append("id_product", id);
     form.append("product_name", product[0].productname);
     form.append("total_price", parseInt(product[0].price) * quantity * 1000);
-    form.append("id_user", JSON.parse(localStorage.getItem("@userLogin")).id);
     form.append("name", JSON.parse(localStorage.getItem("@userLogin")).name);
     form.append("product_image", product[0].productimage[0].filename);
 
     const data = new URLSearchParams(form);
 
-    dispatch(addOrder(data));
+    dispatch(addOrder(data, JSON.parse(localStorage.getItem("@userLogin")).id));
   };
 
   React.useEffect(() => {
@@ -59,7 +63,7 @@ const ProductDetail = () => {
   }, [id, quantity]);
   return (
     <>
-      <Header product authorized />
+      <Header product />
       <form
         className="container grid grid-cols-12 gap-x-20 gap-y-10 mx-auto py-10"
         onSubmit={handleSubmit}

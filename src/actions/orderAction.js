@@ -43,7 +43,7 @@ export const getOrder = (id) => {
   };
 };
 
-export const addOrder = (data) => {
+export const addOrder = (data, id) => {
   return (dispatch) => {
     // loading
     dispatch({
@@ -57,7 +57,7 @@ export const addOrder = (data) => {
 
     // post
     axios
-      .post(`https://hilarious-ox-shawl.cyclic.app/api/v1/orders`, data)
+      .post(`https://hilarious-ox-shawl.cyclic.app/api/v1/orders/${id}`, data)
       .then((res) => {
         dispatch({
           type: ORDER,

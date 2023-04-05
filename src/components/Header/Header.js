@@ -300,7 +300,7 @@ const Header = (props) => {
               <img
                 src={
                   getUserResult
-                    ? `https://res.cloudinary.com/dcf12mtca/image/upload/v1678543339/${getUserResult[0].profile_image}.webp`
+                    ? `https://res.cloudinary.com/dcf12mtca/image/upload/v1678543339/coffeeshop/default_vohio0.webp`
                     : ""
                 }
                 alt="Default"
