@@ -2,7 +2,7 @@ import { useSelector } from "react-redux";
 import OrderItem from "./Order Item/Order-Item";
 
 const OrderList = () => {
-  const { getOrderResult, getOrderLoading, getOrderError } = useSelector(
+  const { getOrderResult, getOrderLoading } = useSelector(
     (state) => state.orderReducer
   );
 

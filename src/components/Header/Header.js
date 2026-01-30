@@ -7,8 +7,8 @@ import "../../assets/styles/header.css";
 import { useDispatch, useSelector } from "react-redux";
 import { getUserById } from "../../actions/userAction";
 import cartIcon from "../../assets/images/icon/cart.svg";
-import searchIcon from "../../assets/images/icon/search.svg";
-import chatIcon from "../../assets/images/icon/chat-bubble-with-lines 1.svg";
+// import searchIcon from "../../assets/images/icon/search.svg";
+// import chatIcon from "../../assets/images/icon/chat-bubble-with-lines 1.svg";
 import homeIcon from "../../assets/images/icon/mobile-home.svg";
 import userIcon from "../../assets/images/icon/user-icon.svg";
 

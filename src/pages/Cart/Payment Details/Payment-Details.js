@@ -2,7 +2,7 @@ import { useEffect, useState } from "react"
 import { useSelector } from "react-redux"
 
 const PaymentDetails = () => {
-    const { getOrderResult, getOrderLoading } = useSelector(state => state.orderReducer)
+    const { getOrderResult } = useSelector(state => state.orderReducer)
     let [subTotal, setSubTotal] = useState(0)
 
     useEffect(() => {
@@ -14,7 +14,7 @@ const PaymentDetails = () => {
             })
         }
         setSubTotal(total)
-    },[getOrderResult])
+    }, [getOrderResult])
 
     return <>
         <div className="mt-10">

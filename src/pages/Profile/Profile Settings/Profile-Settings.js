@@ -4,7 +4,7 @@ import { getUserById } from "../../../actions/userAction";
 
 const ProfileSettings = () => {
   const dispatch = useDispatch();
-  const { getUserResult, getUserLoading, getUserError, editStatus } =
+  const { getUserResult, editStatus } =
     useSelector((state) => state.userReducer);
 
   useEffect(() => {

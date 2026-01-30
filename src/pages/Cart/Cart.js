@@ -7,7 +7,7 @@ import { useNavigate } from "react-router-dom"
 import AddressDetails from "./Address Details/Address-Details"
 import PaymentMethods from "./Payment Methods/Payment-Methods"
 import { getOrder } from "../../actions/orderAction"
-import { useDispatch, useSelector } from "react-redux"
+import { useDispatch } from "react-redux"
 import { Link } from "react-router-dom"
 
 
@@ -26,22 +26,22 @@ const Cart = () => {
         } else {
             setIsLogin(false)
         }
-    },[isLogin, navigate])
+    }, [isLogin, navigate])
 
 
     useEffect(() => {
         if (localStorage.getItem('@userLogin')) {
             dispatch(getOrder(JSON.parse(localStorage.getItem('@userLogin')).id));
         }
-    },[dispatch])
+    }, [dispatch])
 
 
     return (
         <>
-            <Header cart isLogin={setIsLogin} authorized={isLogin}/>
+            <Header cart isLogin={setIsLogin} authorized={isLogin} />
             <div className="p-10 font-rubik text-base bg-[url(../images/cart-bg.webp)] bg-center bg-cover bg-no-repeat">
                 <div className="container grid grid-cols-12 gap-x-36">
-                    <h1 className="col-span-12 text-4xl text-white font-bold" style={{textShadow: '4px 4px 0px rgba(0,0,0,.8)'}}>Checkout your item now!</h1>
+                    <h1 className="col-span-12 text-4xl text-white font-bold" style={{ textShadow: '4px 4px 0px rgba(0,0,0,.8)' }}>Checkout your item now!</h1>
                     <div className="col-span-5 px-8 py-14 bg-white rounded-2xl mt-10">
                         <h1 className="text-3xl font-bold text-center">Order Summary</h1>
                         <OrderList />

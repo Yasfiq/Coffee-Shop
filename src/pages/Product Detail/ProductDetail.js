@@ -1,6 +1,6 @@
 import axios from "axios";
 // eslint-disable-next-line no-unused-vars
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import Header from "../../components/Header/Header";
 import Footer from "../../components/Footer/Footer";
@@ -9,7 +9,7 @@ import "../../assets/styles/product-detail.css";
 import PaymentMethod from "./Payment Method/Payment-Method";
 import Time from "./Time/Time";
 import Size from "./Size/Size";
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
 import { addOrder } from "../../actions/orderAction";
 
 const ProductDetail = () => {
@@ -17,9 +17,6 @@ const ProductDetail = () => {
   const [product, setProduct] = useState([]);
   let [quantity, setQuantity] = useState(1);
   const dispatch = useDispatch();
-  const { addOrderResult, addOrderLoading, addOrderError } = useSelector(
-    (state) => state.orderReducer
-  );
   const navigate = useNavigate();
 
   const handleQuantity = (event) => {
@@ -28,7 +25,7 @@ const ProductDetail = () => {
   const plusQuantity = () => {
     setQuantity((quantity += 1));
   };
-  const minusQuantity = (event) => {
+  const minusQuantity = (_event) => {
     setQuantity((quantity -= 1));
   };
 
