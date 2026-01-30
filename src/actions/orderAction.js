@@ -18,7 +18,7 @@ export const getOrder = (id) => {
 
     // get order
     axios
-      .get(`https://hilarious-ox-shawl.cyclic.app/api/v1/orders/${id}`)
+      .get(`${process.env.REACT_APP_API_URL}/orders/${id}`)
       .then((res) => {
         dispatch({
           type: GET_ORDER,
@@ -57,7 +57,7 @@ export const addOrder = (data, id) => {
 
     // post
     axios
-      .post(`https://hilarious-ox-shawl.cyclic.app/api/v1/orders/${id}`, data)
+      .post(`${process.env.REACT_APP_API_URL}/orders/${id}`, data)
       .then((res) => {
         dispatch({
           type: ORDER,

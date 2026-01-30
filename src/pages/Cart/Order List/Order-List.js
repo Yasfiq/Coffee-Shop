@@ -10,18 +10,18 @@ const OrderList = () => {
     <>
       {getOrderResult
         ? getOrderResult.Data.map((order) => {
-            return (
-              <>
-                <OrderItem
-                  image={`https://res.cloudinary.com/dcf12mtca/image/upload/v1678543339/${order.product_image}.webp`}
-                  productname={order.productname}
-                  quantity={order.quantity}
-                  size={order.size}
-                  total_price={order.total_price}
-                />
-              </>
-            );
-          })
+          return (
+            <>
+              <OrderItem
+                image={`https://res.cloudinary.com/dgiwfhlhr/image/upload/v1769731269/${order.product_image}.webp`}
+                productname={order.productname}
+                quantity={order.quantity}
+                size={order.size}
+                total_price={order.total_price}
+              />
+            </>
+          );
+        })
         : getOrderLoading}
     </>
   );

@@ -109,21 +109,19 @@ const Header = (props) => {
 
           {/* Mobile Navbar */}
           <div
-            className={`fixed md:hidden h-screen w-screen cursor-pointer bg-black/20 duration-300 ease-in-out ${
-              setActive || "hidden"
-            }`}
+            className={`fixed md:hidden h-screen w-screen cursor-pointer bg-black/20 duration-300 ease-in-out ${setActive || "hidden"
+              }`}
             onClick={handleToggle}
           ></div>
           <div
-            className={`w-[70%] z-10 md:hidden fixed h-screen overflow-hidden bg-white rounded-tr-3xl duration-300 ease-in-out ${
-              navbarActive || "-translate-x-full"
-            }`}
+            className={`w-[70%] z-10 md:hidden fixed h-screen overflow-hidden bg-white rounded-tr-3xl duration-300 ease-in-out ${navbarActive || "-translate-x-full"
+              }`}
           >
             <div className="py-8 w-full text-center text-sm text-white bg-secondary">
               <img
                 src={
                   getUserResult
-                    ? `https://res.cloudinary.com/dcf12mtca/image/upload/v1678543339/${getUserResult[0].profile_image}.webp`
+                    ? `https://res.cloudinary.com/dgiwfhlhr/image/upload/v1769731269/${getUserResult[0].profile_image}.webp`
                     : ""
                 }
                 alt="Default"
@@ -219,7 +217,7 @@ const Header = (props) => {
                 <img
                   src={
                     getUserResult
-                      ? `https://res.cloudinary.com/dcf12mtca/image/upload/v1678543339/${getUserResult[0].profile_image}.webp`
+                      ? `https://res.cloudinary.com/dgiwfhlhr/image/upload/v1769731269/${getUserResult[0].profile_image}.webp`
                       : ""
                   }
                   alt="Default"
@@ -250,9 +248,8 @@ const Header = (props) => {
                 </div>
               </div>
               <ul
-                className={`absolute z-50 text-xl -bottom-72 right-32 text-secondary font-medium font-rubik ${
-                  setActive || "hidden"
-                }`}
+                className={`absolute z-50 text-xl -bottom-72 right-32 text-secondary font-medium font-rubik ${setActive || "hidden"
+                  }`}
               >
                 <Link to="/edit-profile">
                   <li className="cursor-pointer select-none bg-white py-4 px-10 hover:bg-[#e1e1e1]">
@@ -286,21 +283,19 @@ const Header = (props) => {
         <header className="shadow-lg">
           {/* Mobile Navbar */}
           <div
-            className={`absolute md:hidden h-screen w-screen cursor-pointer bg-black/20 duration-300 ease-in-out ${
-              setActive || "hidden"
-            }`}
+            className={`absolute md:hidden h-screen w-screen cursor-pointer bg-black/20 duration-300 ease-in-out ${setActive || "hidden"
+              }`}
             onClick={handleToggle}
           ></div>
           <div
-            className={`w-[70%] md:hidden z-10 absolute h-screen overflow-hidden bg-white rounded-tr-3xl duration-300 ease-in-out ${
-              navbarActive || "-translate-x-full"
-            }`}
+            className={`w-[70%] md:hidden z-10 absolute h-screen overflow-hidden bg-white rounded-tr-3xl duration-300 ease-in-out ${navbarActive || "-translate-x-full"
+              }`}
           >
             <div className="py-8 w-full text-center text-sm text-white bg-secondary">
               <img
                 src={
                   getUserResult
-                    ? `https://res.cloudinary.com/dcf12mtca/image/upload/v1678543339/coffeeshop/default_vohio0.webp`
+                    ? `https://res.cloudinary.com/dgiwfhlhr/image/upload/v1769731269/coffeeshop/default_vohio0.webp`
                     : ""
                 }
                 alt="Default"

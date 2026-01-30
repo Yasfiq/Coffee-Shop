@@ -15,7 +15,7 @@ const Login = () => {
     const data = new FormData(e.target);
     const form = new URLSearchParams(data);
     axios
-      .post("https://hilarious-ox-shawl.cyclic.app/api/v1/auth/login", form)
+      .post(`${process.env.REACT_APP_API_URL}/auth/login`, form)
       .then((res) => {
         localStorage.setItem("@userLogin", JSON.stringify(res.data.data));
         navigate("/product");

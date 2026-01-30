@@ -106,7 +106,7 @@ const Menu = (props) => {
                       className="px-3 py-5 text-center bg-white rounded-3xl shadow-xl"
                     >
                       <img
-                        src={`https://res.cloudinary.com/dcf12mtca/image/upload/v1678543339/${product.productimage[0].filename}.webp`}
+                        src={`https://res.cloudinary.com/dgiwfhlhr/image/upload/v1769731269/${product.productimage[0].filename}.webp`}
                         alt={product.productimage[0].name}
                         className="-mt-20 w-40 h-40 mx-auto rounded-full"
                       />
@@ -129,7 +129,7 @@ const Menu = (props) => {
                         className="px-3 py-5 text-center bg-white rounded-3xl shadow-xl"
                       >
                         <img
-                          src={`https://res.cloudinary.com/dcf12mtca/image/upload/v1678543339/${product.productimage[0].filename}.webp`}
+                          src={`https://res.cloudinary.com/dgiwfhlhr/image/upload/v1769731269/${product.productimage[0].filename}.webp`}
                           alt={product.productimage[0].name}
                           className="-mt-20 w-40 h-40 mx-auto rounded-full"
                         />
@@ -155,7 +155,7 @@ const Menu = (props) => {
                       <div
                         className="-mt-20 w-40 h-40 mx-auto rounded-full bg-cover bg-center bg-no-repeat"
                         style={{
-                          backgroundImage: `url('https://res.cloudinary.com/dcf12mtca/image/upload/v1678543339/${product.productimage[0].filename}.webp')`,
+                          backgroundImage: `url('https://res.cloudinary.com/dgiwfhlhr/image/upload/v1769731269/${product.productimage[0].filename}.webp')`,
                         }}
                       ></div>
                       <h4 className="font-poppins text-2xl font-black mt-4">

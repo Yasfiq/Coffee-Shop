@@ -18,7 +18,7 @@ const ProfileSettings = () => {
           <div
             className="w-44 h-44 font-rubik rounded-full bg-cover bg-no-repeat bg-center"
             style={{
-              backgroundImage: `url("https://res.cloudinary.com/dcf12mtca/image/upload/v1678543339/${getUserResult[0].profile_image}.webp")`,
+              backgroundImage: `url("https://res.cloudinary.com/dgiwfhlhr/image/upload/v1769731269/${getUserResult[0].profile_image}.webp")`,
             }}
           ></div>
           <p className="font-bold text-black text-2xl mt-4">

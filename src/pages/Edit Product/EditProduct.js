@@ -93,8 +93,8 @@ const EditProduct = () => {
                 userInfo.filepreview !== null
                   ? userInfo.filepreview
                   : product[0]
-                  ? `https://res.cloudinary.com/dcf12mtca/image/upload/v1678543339/${product[0].productimage[0].filename}.webp`
-                  : cameraIcon
+                    ? `https://res.cloudinary.com/dgiwfhlhr/image/upload/v1769731269/${product[0].productimage[0].filename}.webp`
+                    : cameraIcon
               }
               alt="camera-icon"
               width="100%"
@@ -103,29 +103,29 @@ const EditProduct = () => {
           <div className="w-full p-3 grid grid-cols-3 gap-3 items-center rounded-xl bg-[#f4f4f4]">
             {userInfo.previews !== null
               ? userInfo.previews.map((image) => {
-                  return (
-                    <>
-                      <img
-                        src={URL.createObjectURL(image)}
-                        alt="img 1"
-                        className="block h-full mr-3"
-                      />
-                    </>
-                  );
-                })
+                return (
+                  <>
+                    <img
+                      src={URL.createObjectURL(image)}
+                      alt="img 1"
+                      className="block h-full mr-3"
+                    />
+                  </>
+                );
+              })
               : product[0]
-              ? product[0].productimage.map((image) => {
+                ? product[0].productimage.map((image) => {
                   return (
                     <>
                       <img
-                        src={`https://res.cloudinary.com/dcf12mtca/image/upload/v1678543339/${image.filename}.webp`}
+                        src={`https://res.cloudinary.com/dgiwfhlhr/image/upload/v1769731269/${image.filename}.webp`}
                         alt={`${image.name}`}
                         className="block h-full mr-3"
                       />
                     </>
                   );
                 })
-              : ""}
+                : ""}
           </div>
           <input
             className="hidden"
@@ -197,11 +197,10 @@ const EditProduct = () => {
             name="category"
             className="input-oneline text-base mb-10"
             placeholder="Type the category"
-            defaultValue={`${
-              product[0] && product[0].category !== "undefined"
+            defaultValue={`${product[0] && product[0].category !== "undefined"
                 ? product[0].category
                 : ""
-            }`}
+              }`}
           />
           {/*  */}
           <label for="description" className="font-bold text-secondary text-xl">
@@ -213,11 +212,10 @@ const EditProduct = () => {
             name="description"
             className="input-oneline text-base mb-10"
             placeholder="Describe your product min. 100 characters"
-            defaultValue={`${
-              product[0] && product[0].description !== undefined
+            defaultValue={`${product[0] && product[0].description !== undefined
                 ? product[0].description
                 : ""
-            }`}
+              }`}
           />
           <h3 className="font-bold text-secondary text-xl">
             Input product size :

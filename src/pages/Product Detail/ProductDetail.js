@@ -56,7 +56,7 @@ const ProductDetail = () => {
       setQuantity(1);
     }
     axios
-      .get(`https://hilarious-ox-shawl.cyclic.app/api/v1/products/${id}`)
+      .get(`${process.env.REACT_APP_API_URL}/products/${id}`)
       .then((response) => {
         setProduct(response.data.Data);
       });
@@ -78,7 +78,7 @@ const ProductDetail = () => {
           <img
             src={
               product[0] &&
-              `https://res.cloudinary.com/dcf12mtca/image/upload/v1678543339/${product[0].productimage[0].filename}.webp`
+              `https://res.cloudinary.com/dgiwfhlhr/image/upload/v1769731269/${product[0].productimage[0].filename}.webp`
             }
             className="block h-72 w-72 rounded-full bg-cover bg-center bg-no-repeat mx-auto mt-4"
             alt={product[0] && product[0].productimage[0].name}
@@ -121,9 +121,8 @@ const ProductDetail = () => {
                 <span className="select-none">+</span>
               </div>
             </div>
-            <p className="text-4xl font-bold text-black">{`IDR ${
-              product[0] ? parseInt(product[0].price) * quantity * 1000 : ""
-            }`}</p>
+            <p className="text-4xl font-bold text-black">{`IDR ${product[0] ? parseInt(product[0].price) * quantity * 1000 : ""
+              }`}</p>
           </div>
           <button type="submit" className="btn-primary w-full text-4xl mt-16">
             Add to cart

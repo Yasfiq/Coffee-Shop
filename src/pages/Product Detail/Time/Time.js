@@ -4,7 +4,7 @@ const Time = () => {
     return <>
         <div className="flex mt-4">
             <p className="text-base mr-8 self-center">Now</p>
-            <InputRadio name="time" value={Date.now()} label="Yes" />
+            <InputRadio name="time" value={new Date().toISOString()} label="Yes" />
             <InputRadio name="time" value="notnow" label="No" />
         </div>
         <div className="flex mt-6">

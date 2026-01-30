@@ -25,8 +25,7 @@ export const getProduct = (category, order, search, limit) => {
     }
     axios
       .get(
-        `https://hilarious-ox-shawl.cyclic.app/api/v1/products${`?${
-          `category=${categoryUse}` || ""
+        `${process.env.REACT_APP_API_URL}/products${`?${`category=${categoryUse}` || ""
         }${`&sort=price&order=${order}`}${`&search=${search}`}${`&limit=${limit}`}`}`
       )
       .then((res) => {
@@ -71,7 +70,7 @@ export const addProduct = (data) => {
 
     // get product
     axios
-      .post(`https://hilarious-ox-shawl.cyclic.app/api/v1/products`, data)
+      .post(`${process.env.REACT_APP_API_URL}/products`, data)
       .then((res) => {
         // console.log(`3. Berhasil, Data:`, res.data);
         // success get
@@ -115,7 +114,7 @@ export const editProduct = (id, data) => {
     // get product
     axios
       .patch(
-        `https://hilarious-ox-shawl.cyclic.app/api/v1/products/${id}`,
+        `${process.env.REACT_APP_API_URL}/products/${id}`,
         data
       )
       .then((res) => {
@@ -160,7 +159,7 @@ export const deleteProduct = (id) => {
 
     // delete product
     axios
-      .delete(`https://hilarious-ox-shawl.cyclic.app/api/v1/products/${id}`)
+      .delete(`${process.env.REACT_APP_API_URL}/products/${id}`)
       .then((res) => {
         // console.log(`3. Berhasil, Data:`, res.data);
         // success get

@@ -16,7 +16,7 @@ export const getUserById = (id) => {
 
     // get data user
     axios
-      .get(`https://hilarious-ox-shawl.cyclic.app/api/v1/users/${id}`)
+      .get(`${process.env.REACT_APP_API_URL}/users/${id}`)
       .then((res) => {
         // success get
         // console.log(res.data);

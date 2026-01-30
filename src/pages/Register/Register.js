@@ -25,7 +25,7 @@ const Register = () => {
       const form = new URLSearchParams(data);
       axios
         .post(
-          "https://hilarious-ox-shawl.cyclic.app/api/v1/auth/register",
+          `${process.env.REACT_APP_API_URL}/auth/register`,
           form
         )
         .then((res) => {
